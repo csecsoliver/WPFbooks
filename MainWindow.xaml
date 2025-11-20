@@ -1,12 +1,40 @@
-﻿<Window x:Class="WPFbooks.MainWindow"
+﻿<!-- ReSharper disable once ObsoleteElementError -->
+<Window x:Class="WPFbooks.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFbooks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="MainWindow" Height="450" Width="800"
+        ThemeMode="Dark">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Content="Cím" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5, 0" FontSize="14"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="TitleInput" VerticalAlignment="Center"></TextBox>
+            <Label Grid.Column="0" Grid.Row="1" Content="Szerző" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5, 0" FontSize="14"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Name="AuthorInput" VerticalAlignment="Center"></TextBox>
+            
+        </Grid>
+        
     </Grid>
 </Window>
