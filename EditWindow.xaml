@@ -5,8 +5,64 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WPFbooks"
         mc:Ignorable="d"
-        Title="EditWindow" Height="450" Width="800">
-    <Grid>
+        Title="EditWindow" Height="450" Width="800" FontSize="24">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+
+        <Label Grid.Row="0" Content="Könyv adatok" FontWeight="Bold" FontSize="35" Grid.ColumnSpan="2" Margin="20, 0, 0, 0"/>
+        
+        <Label Grid.Row="1" Grid.Column="0" Content="Cím:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Szerző:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Műfaj:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Státusz:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        
+        
+
+        <TextBox Name="txtTitle"  Grid.Row="1" Grid.Column="1" Text="Arany János" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300" MinWidth="200" Margin="20, 0, 0, 0"/>
+        <TextBox Name="txtAuthor"  Grid.Row="2" Grid.Column="1" Text="Valami hosszú szöveg teszt" HorizontalAlignment="Left" VerticalAlignment="Center" Width="400" MinWidth="300" Margin="20, 0, 0, 0"/>
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <ComboBox Name="cbGenre" Grid.Row="3" Grid.Column="0" Height="35" Width="300" MinWidth="200" HorizontalAlignment="Left" Margin="20,0,0,0">
+                <ComboBoxItem Content="Fantasztikus"/>
+            </ComboBox>
+            <Button Name="btnNewGenre" Grid.Row="3" Grid.Column="1" Content="Új műfaj" Width="100" Height="35" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+        </Grid>
+        <WrapPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
+            <RadioButton Content="Nem elkezdett" VerticalContentAlignment="Center" Margin="20,0,0,0"/>
+            <RadioButton Content="Elkezdett" VerticalContentAlignment="Center" Margin="20,0,0,0"/>
+            <RadioButton Content="Befejezett" VerticalContentAlignment="Center" Margin="20,0,0,0"/>
+        </WrapPanel>
+
+        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="5" Grid.Column="0" Content="Jelenlegi oldal:" HorizontalAlignment="Left"/>
+            
+        </Grid>
+
         
     </Grid>
 </Window>
