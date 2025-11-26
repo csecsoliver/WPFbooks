@@ -2,28 +2,28 @@
   {
     "Title": "To Kill a Mockingbird",
     "Author": "Harper Lee",
-    "Genre": 0,
+    "GenreId": 0,
     "PublishedYear": 1960,
     "Status": 0
   },
   {
     "Title": "1984",
     "Author": "George Orwell",
-    "Genre": 1,
+    "GenreId": 1,
     "PublishedYear": 1949,
     "Status": 1
   },
   {
     "Title": "The Great Gatsby",
     "Author": "F. Scott Fitzgerald",
-    "Genre": 0,
+    "GenreId": 0,
     "PublishedYear": 1925,
     "Status": 0
   },
   {
     "Title": "The Catcher in the Rye",
     "Author": "J.D. Salinger",
-    "Genre": 0,
+    "GenreId": 0,
     "PublishedYear": 1951,
     "Status": 2
   }
