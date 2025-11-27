@@ -22,7 +22,7 @@ public class Book
         get => _genreName;
         set
         {
-            Genre = Data.GetGenreByName(_genreName);
+            Genre = Data.GetGenreByName(value);
             _genreName = value;
         }
     }

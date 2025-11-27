@@ -2,7 +2,7 @@
   {
     "Title": "To Kill a Mockingbird",
     "Author": "Harper Lee",
-    "GenreId": 0,
+    "GenreName": "Fiction",
     "PublishedYear": 1960,
     "Status": 1,
     "CurrentPage": 30,
@@ -11,7 +11,7 @@
   {
     "Title": "1984",
     "Author": "George Orwell",
-    "GenreId": 1,
+    "GenreName": "Dystopian",
     "PublishedYear": 1949,
     "Status": 1,
     "CurrentPage": 1,
@@ -20,7 +20,7 @@
   {
     "Title": "The Great Gatsby",
     "Author": "F. Scott Fitzgerald",
-    "GenreId": 0,
+    "GenreName": "Fiction",
     "PublishedYear": 1925,
     "Status": 0,
     "CurrentPage": 0,
@@ -29,7 +29,7 @@
   {
     "Title": "The Catcher in the Rye",
     "Author": "J.D. Salinger",
-    "GenreId": 0,
+    "GenreName": "Fiction",
     "PublishedYear": 1951,
     "Status": 2,
     "CurrentPage": 400,

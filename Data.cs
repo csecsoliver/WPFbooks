@@ -21,6 +21,7 @@ public static class Data
         using var sr = new StreamReader(dataPath);
         var data = sr.ReadToEnd();
         books = JsonSerializer.Deserialize<List<Book>>(data) ?? [];
+        var local = books;
         return;
     }
 
