@@ -8,7 +8,7 @@ public static class Data
     static string dataPath = "books.json";
     static string genrePath = "genres.json";
     public static List<Book> books;
-    static List<Genre> genres;
+    public static List<Genre> genres;
     static Data()
     {
         LoadData();
