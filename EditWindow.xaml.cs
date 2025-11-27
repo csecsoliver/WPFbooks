@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace WPFbooks;
 
@@ -13,11 +14,12 @@ public partial class EditWindow : Window
 
     private void LoadBookData()
     {
-        var books = Data.books; /*
-        if (bookId == null)
-            return; //Don't have to load in book datas
-        //var book = books[Convert.ToInt32(this.bookId)];
-        */
+        var books = Data.books;
+        //if(books.Count(book => book.Id == bookId) == 0)
+        //    rbNotStarted.IsChecked = true;
+        //    return;
+
+        //var book = books.First(book => book.Id == bookId);
         var book = books[2]; //For testing
 
         txtTitle.Text = book.Title;
@@ -50,9 +52,48 @@ public partial class EditWindow : Window
         var genres = Data.genres;
         if(genres == null) return;
 
+        cbGenre.Items.Clear();
         foreach(var g in genres)
         {
             cbGenre.Items.Add(g.Name);
         }
+    }
+
+    private void btnNewGenre_Click(object sender, RoutedEventArgs e)
+    {
+        var newGenre = cbGenre.Text;
+        if (Data.genres.Count(genre => genre.Name == newGenre) == 0)
+        {
+            Data.genres.Add(new Genre(newGenre));
+            LoadGenres();
+        }
+    }
+
+    private void btnCancel_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void btnSave_Click(object sender, RoutedEventArgs e)
+    {
+        if (Data.books.Count(book => book.Id == bookId) == 0)
+            NewBook();
+
+        else
+            ModifyBook(Data.books.First(book => book.Id == bookId));
+
+    }
+
+    private void ModifyBook(Book book)
+    {
+        if(txtAuthor.Text != "" && txtTitle.Text != "" && Data.genres.Any(genre => genre.Name == cbGenre.Text) )    //Number TryParse check
+        {
+
+        }
+    }
+
+    private void NewBook()
+    {
+        throw new NotImplementedException();
     }
 }

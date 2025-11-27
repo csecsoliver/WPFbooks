@@ -6,9 +6,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WPFbooks"
         mc:Ignorable="d"
-        Title="EditWindow" Height="450" MinWidth="600" MinHeight="400"  Width="800"
+        Title="EditWindow" Height="450" MinWidth="600" MinHeight="400"  Width="800" FontSize="14"
         ThemeMode="Dark">
-    <Grid Margin="10" MaxWidth="550" MaxHeight="350">
+    <Grid Margin="10" Width="600" MaxHeight="350">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="5*"/>
@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         
 
-        <Label Grid.Row="0" Content="Könyv adatok" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="20, 0, 0, 0"/>
+        <Label Grid.Row="0" Content="Könyv adatok" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="20, 0, 0, 0"/>
         
         <Label Grid.Row="1" Grid.Column="0" Content="Cím:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <Label Grid.Row="2" Grid.Column="0" Content="Szerző:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
@@ -42,10 +42,12 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
-            <ComboBox Name="cbGenre" Grid.Row="3" Grid.Column="0" Height="35" MinWidth="200" HorizontalAlignment="Left" Margin="20,0,0,0" IsEditable="True">
+            <ComboBox Name="cbGenre" Grid.Row="3" Grid.Column="0" Height="35" MinWidth="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" IsEditable="True">
                 
             </ComboBox>
-            <Button Name="btnNewGenre" Grid.Row="3" Grid.Column="1" Content="Új műfaj" Width="100" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+            <Button Name="btnNewGenre" Grid.Row="3" Grid.Column="1" Content="Új műfaj" Width="100" HorizontalAlignment="Left" Margin="20,0,0,0" Click="btnNewGenre_Click"/>
+            <Label Name="lbErrorGenre" Grid.Row="3" Grid.Column="1" Content="" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Red"/>
+
         </Grid>
         <WrapPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
             <RadioButton GroupName="rbReadingStatus" Name="rbNotStarted" Content="Nem elkezdett" VerticalContentAlignment="Top" Margin="20,0,0,0"/>
@@ -64,6 +66,7 @@
             <TextBox Name="txtCurrentPage"  Grid.Row="5" Grid.Column="0" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="50" Width="60" Margin="10,0,0,0"/>
             <Label Grid.Row="5" Grid.Column="1" Content="Összes oldal:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <TextBox Name="txtTotalPages" Grid.Row="5" Grid.Column="2" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="50" Width="60" Margin="10,0,0,0"/>
+            <Label Name="lblErrorPage" Grid.Row="5" Grid.Column="2" Content="" HorizontalAlignment="Right" VerticalContentAlignment="Center" Foreground="Red"/>
         </Grid>
 
         <Grid Grid.Row="7" Grid.Column="1">
@@ -73,8 +76,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="btnCancel" Grid.Row="7" Grid.Column="1" Content="Elvetés" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100"/>
-            <Button Name="btnSave" Grid.Row="7" Grid.Column="2" Content="Mentés" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100"/>
+            <Button Name="btnCancel" Grid.Row="7" Grid.Column="1" Content="Elvetés" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Click="btnCancel_Click"/>
+            <Button Name="btnSave" Grid.Row="7" Grid.Column="2" Content="Mentés" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Click="btnSave_Click"/>
         </Grid>
 
 
