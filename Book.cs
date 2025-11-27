@@ -16,14 +16,14 @@ public class Book
     
     public Genre Genre;
 
-    private int _genreId;
-    public int GenreId
+    private string _genreName;
+    public string GenreName
     {
-        get => _genreId;
+        get => _genreName;
         set
         {
-            Genre = Data.GetGenreById(_genreId);
-            _genreId = value;
+            Genre = Data.GetGenreByName(_genreName);
+            _genreName = value;
         }
     }
 

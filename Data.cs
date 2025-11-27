@@ -31,9 +31,9 @@ public static class Data
         sw.Write(data);
     }
 
-    public static Genre GetGenreById(int genreId)
+    public static Genre GetGenreByName(string genreName)
     {
-        foreach (var genre in genres.Where(genre => genre.Id == genreId))
+        foreach (var genre in genres.Where(genre => genre.Name == genreName))
         {
             return genre;
         }
