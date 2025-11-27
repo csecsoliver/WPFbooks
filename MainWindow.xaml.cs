@@ -33,6 +33,7 @@ public partial class MainWindow : Window
             listitem.Selected += Item_Click;
             booklist.Items.Add(listitem);
         }
+        
     }
 
     private void Item_Click(object sender, RoutedEventArgs e)
@@ -44,13 +45,62 @@ public partial class MainWindow : Window
         var totalpages = FindName("TotalPagesLabel") as Label;
         var currentpage = FindName("CurrentPageLabel") as Label;
         var item = sender as ListBoxItem;
-        var book = item!.Tag as Book;
-        title.Content = book.Title;
-        author.Content = book.Author;
-        genre.Content = book.Genre;
-        status.Content = book.Status;
-        totalpages.Content = book.TotalPages.ToString();
-        currentpage.Content = book.CurrentPage.ToString();
+        var book = (item!.Tag as Book)!;
+        title!.Content = book.Title;
+        author!.Content = book.Author;
+        genre!.Content = book.Genre.Name;
+        status!.Content = book.Status;
+        totalpages!.Content = book.TotalPages.ToString();
+        currentpage!.Content = book.CurrentPage.ToString();
+        
+    }
 
+    private void SearchButton_Click(object sender, RoutedEventArgs e)
+    {
+        var title = FindName("TitleInput") as TextBox;
+        var author = FindName("AuthorInput") as TextBox;
+        var genre = FindName("GenreComboBox") as ComboBox;
+        var status = "";
+        if (FindName("ToReadRadioButton") is RadioButton toread && toread.IsChecked == true)
+        {
+            status = "ToRead";
+        }
+        else if (FindName("ReadingRadioButton") is RadioButton reading && reading.IsChecked == true)
+        {
+            status = "Reading";
+        }
+        else if (FindName("CompletedRadioButton") is RadioButton completed && completed.IsChecked == true)
+        {
+           status = "Completed";
+        }
+        var results = (ListBox) FindName("BooksListBox")!;
+        foreach (var book in Data.books)
+        {
+            if ((string.IsNullOrEmpty(title!.Text) || !book.Title.Contains(title.Text)) ||
+                (string.IsNullOrEmpty(author!.Text) || !book.Author.Contains(author.Text)) ||
+                (genre!.SelectedItem is ComboBoxItem genreItem && genreItem.Content.ToString() != "Any" && book.Genre.Name != genreItem.Content.ToString()) ||
+                (!string.IsNullOrEmpty(status) && book.Status.ToString() != status))
+            {
+                // Hide item
+                foreach (ListBoxItem item in results.Items)
+                {
+                    if (item.Tag == book)
+                    {
+                        item.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+            else
+            {
+                // Show item
+                foreach (ListBoxItem item in results.Items)
+                {
+                    if (item.Tag == book)
+                    {
+                        item.Visibility = Visibility.Visible;
+                    }
+                }
+            }
+        }
     }
 }

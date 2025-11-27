@@ -34,10 +34,7 @@ public static class Data
 
     public static Genre GetGenreByName(string genreName)
     {
-        foreach (var genre in genres.Where(genre => genre.Name == genreName))
-        {
-            return genre;
-        }
+        return genres.FirstOrDefault(genre => genre.Name == genreName)??
         throw new KeyNotFoundException();
     }
 }
