@@ -4,5 +4,4 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
-/.vs/WPFbooks
-/.vs/ProjectEvaluation
+.vs
