@@ -1,3 +1,3 @@
 ﻿namespace WPFbooks;
 
-public record Genre(string Name, int Id);
+public record Genre(string Name);
