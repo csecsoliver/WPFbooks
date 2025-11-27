@@ -7,8 +7,8 @@ public static class Data
 {
     static string dataPath = "books.json";
     static string genrePath = "genres.json";
-    public static List<Book> books;
-    public static List<Genre> genres;
+    public static List<Book> books = [];
+    public static List<Genre> genres = [];
     static Data()
     {
         LoadData();
@@ -34,11 +34,7 @@ public static class Data
 
     public static Genre GetGenreByName(string genreName)
     {
-        foreach (var genre in genres.Where(genre => genre.Name == genreName))
-        {
-            return genre;
-        }
-        
+        return genres.FirstOrDefault(genre => genre.Name == genreName)??
         throw new KeyNotFoundException();
     }
 }
