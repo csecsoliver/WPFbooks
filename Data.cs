@@ -7,8 +7,8 @@ public static class Data
 {
     static string dataPath = "books.json";
     static string genrePath = "genres.json";
-    public static List<Book> books;
-    public static List<Genre> genres;
+    public static List<Book> books = [];
+    public static List<Genre> genres = [];
     static Data()
     {
         LoadData();
@@ -38,7 +38,6 @@ public static class Data
         {
             return genre;
         }
-        
         throw new KeyNotFoundException();
     }
 }
