@@ -24,8 +24,4 @@ public class Book
 
     public int Year { get; set; }
     public BookStatus Status { get; set; }
-    public Book(string title, string author, BookStatus status)
-    {
-        
-    }
 }

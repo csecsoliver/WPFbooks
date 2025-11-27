@@ -6,7 +6,8 @@ namespace WPFbooks;
 public static class Data
 {
     static string dataPath = "books.json";
-    static List<Book> books;
+    static string genrePath = "genres.json";
+    public static List<Book> books;
     static List<Genre> genres;
     static Data()
     {
@@ -15,9 +16,12 @@ public static class Data
 
     public static void LoadData()
     {
+        using var file = File.OpenRead(genrePath);
+        genres = JsonSerializer.Deserialize<List<Genre>>(file) ?? [];
         using var sr = new StreamReader(dataPath);
         var data = sr.ReadToEnd();
         books = JsonSerializer.Deserialize<List<Book>>(data) ?? [];
+        return;
     }
 
     public static void SaveData()
