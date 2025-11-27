@@ -42,15 +42,15 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
-            <ComboBox Name="cbGenre" Grid.Row="3" Grid.Column="0" Height="35" MinWidth="200" HorizontalAlignment="Left" Margin="20,0,0,0">
+            <ComboBox Name="cbGenre" Grid.Row="3" Grid.Column="0" Height="35" MinWidth="200" HorizontalAlignment="Left" Margin="20,0,0,0" IsEditable="True">
                 
             </ComboBox>
             <Button Name="btnNewGenre" Grid.Row="3" Grid.Column="1" Content="Új műfaj" Width="100" HorizontalAlignment="Left" Margin="20,0,0,0"/>
         </Grid>
         <WrapPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
-            <RadioButton Content="Nem elkezdett" VerticalContentAlignment="Top" Margin="20,0,0,0"/>
-            <RadioButton Content="Elkezdett" VerticalContentAlignment="Top" Margin="10,0,0,0"/>
-            <RadioButton Content="Befejezett" VerticalContentAlignment="Top" Margin="0,0,0,0"/>
+            <RadioButton GroupName="rbReadingStatus" Name="rbNotStarted" Content="Nem elkezdett" VerticalContentAlignment="Top" Margin="20,0,0,0"/>
+            <RadioButton GroupName="rbReadingStatus" Name="rbStarted" Content="Elkezdett" VerticalContentAlignment="Top" Margin="10,0,0,0"/>
+            <RadioButton GroupName="rbReadingStatus" Name="rbFinished" Content="Befejezett" VerticalContentAlignment="Top" Margin="0,0,0,0"/>
         </WrapPanel>
 
         <Grid Grid.Row="5" Grid.Column="1">
@@ -61,9 +61,9 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Name="txtcurrentPage"  Grid.Row="5" Grid.Column="0" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="50" Width="60" Margin="10,0,0,0"/>
+            <TextBox Name="txtCurrentPage"  Grid.Row="5" Grid.Column="0" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="50" Width="60" Margin="10,0,0,0"/>
             <Label Grid.Row="5" Grid.Column="1" Content="Összes oldal:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <TextBox Name="txtPages" Grid.Row="5" Grid.Column="2" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="50" Width="60" Margin="10,0,0,0"/>
+            <TextBox Name="txtTotalPages" Grid.Row="5" Grid.Column="2" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="50" Width="60" Margin="10,0,0,0"/>
         </Grid>
 
         <Grid Grid.Row="7" Grid.Column="1">
@@ -73,8 +73,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="7" Grid.Column="1" Content="Elvetés" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100"/>
-            <Button Grid.Row="7" Grid.Column="2" Content="Mentés" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100"/>
+            <Button Name="btnCancel" Grid.Row="7" Grid.Column="1" Content="Elvetés" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100"/>
+            <Button Name="btnSave" Grid.Row="7" Grid.Column="2" Content="Mentés" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100"/>
         </Grid>
 
 
