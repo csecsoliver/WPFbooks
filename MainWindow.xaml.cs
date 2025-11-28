@@ -33,7 +33,7 @@ public partial class MainWindow : Window
             listitem.Selected += Item_Click;
             booklist.Items.Add(listitem);
         }
-        
+
     }
 
     private void Item_Click(object sender, RoutedEventArgs e)
@@ -52,7 +52,7 @@ public partial class MainWindow : Window
         status!.Content = book.Status;
         totalpages!.Content = book.TotalPages.ToString();
         currentpage!.Content = book.CurrentPage.ToString();
-        
+
     }
 
     private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ public partial class MainWindow : Window
         var title = FindName("TitleInput") as TextBox;
         var author = FindName("AuthorInput") as TextBox;
         var genre = FindName("GenreComboBox") as ComboBox;
-        var status = "";
+        var status = "Any";
         if (FindName("ToReadRadioButton") is RadioButton toread && toread.IsChecked == true)
         {
             status = "ToRead";
@@ -74,32 +74,18 @@ public partial class MainWindow : Window
            status = "Completed";
         }
         var results = (ListBox) FindName("BooksListBox")!;
+        results.Items.Clear();
         foreach (var book in Data.books)
         {
-            if ((string.IsNullOrEmpty(title!.Text) || !book.Title.Contains(title.Text)) ||
-                (string.IsNullOrEmpty(author!.Text) || !book.Author.Contains(author.Text)) ||
-                (genre!.SelectedItem is ComboBoxItem genreItem && genreItem.Content.ToString() != "Any" && book.Genre.Name != genreItem.Content.ToString()) ||
-                (!string.IsNullOrEmpty(status) && book.Status.ToString() != status))
+            if ((string.IsNullOrEmpty(title!.Text) || book.Title.Contains(title.Text)) &&
+                (string.IsNullOrEmpty(author!.Text) || book.Author.Contains(author.Text)) &&
+                (status == "Any" || book.Status.ToString() == status))
             {
-                // Hide item
-                foreach (ListBoxItem item in results.Items)
-                {
-                    if (item.Tag == book)
-                    {
-                        item.Visibility = Visibility.Collapsed;
-                    }
-                }
-            }
-            else
-            {
-                // Show item
-                foreach (ListBoxItem item in results.Items)
-                {
-                    if (item.Tag == book)
-                    {
-                        item.Visibility = Visibility.Visible;
-                    }
-                }
+                var listitem = new ListBoxItem();
+                listitem.Content = book.Title;
+                listitem.Tag = book;
+                listitem.Selected += Item_Click;
+                results.Items.Add(listitem);
             }
         }
     }
