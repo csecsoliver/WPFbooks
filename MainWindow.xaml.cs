@@ -33,6 +33,7 @@ public partial class MainWindow : Window
             listitem.Selected += Item_Click;
             booklist.Items.Add(listitem);
         }
+        var genrecombo = (ComboBox) Findname("GenreComboBox")!;
 
     }
 
@@ -79,7 +80,8 @@ public partial class MainWindow : Window
         {
             if ((string.IsNullOrEmpty(title!.Text) || book.Title.Contains(title.Text)) &&
                 (string.IsNullOrEmpty(author!.Text) || book.Author.Contains(author.Text)) &&
-                (status == "Any" || book.Status.ToString() == status))
+                (status == "Any" || book.Status.ToString() == status)) &&
+                ()
             {
                 var listitem = new ListBoxItem();
                 listitem.Content = book.Title;

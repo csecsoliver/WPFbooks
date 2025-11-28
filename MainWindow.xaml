@@ -94,7 +94,8 @@
                 Name="GenreComboBox"
                 VerticalAlignment="Center"
             >
-                <ComboBoxItem>asd</ComboBoxItem>
+                <ComboBoxItem Selected="true">Any</ComboBoxItem>
+
             </ComboBox>
 
             <Label
