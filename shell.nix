@@ -10,14 +10,11 @@ pkgs.mkShell {
     winetricks
   ];
 
-  # Environment Variables
+  # Setup and env
   shellHook = ''
     # 1. Localize Wine to this directory so it doesn't mess with ~/.wine
     export WINEPREFIX="$(pwd)/.wine-prefix"
     export WINEARCH=win64
-
-    # 2. Quiet .NET telemetry
-    export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
     # 3. Initialization Logic
     if [ ! -d "$WINEPREFIX" ]; then
@@ -27,7 +24,9 @@ pkgs.mkShell {
       echo "Installing Core Fonts & D3DCompiler (This takes time)..."
       # -q = quiet/unattended mode
       winetricks -q corefonts cjkfonts d3dcompiler_47
-
+      wget https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.308/dotnet-sdk-9.0.308-win-x64.exe
+      wine dotnet-sdk-9.0.308-win-x64.exe
+      rm dotnet-sdk-9.0.308-win-x64.exe
       echo "Disabling WPF Hardware Acceleration (Fixes OpenGL crashes)..."
       echo 'REGEDIT4
       [HKEY_CURRENT_USER\Software\Microsoft\Avalon.Graphics]

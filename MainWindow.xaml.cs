@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,7 +24,7 @@ public partial class MainWindow : Window
 
     private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
     {
-        var booklist = (ListBox) FindName("BooksListBox")!;
+        var booklist = (ListBox)FindName("BooksListBox")!;
         foreach (var book in Data.books)
         {
             var listitem = new ListBoxItem();
@@ -33,7 +33,7 @@ public partial class MainWindow : Window
             listitem.Selected += Item_Click;
             booklist.Items.Add(listitem);
         }
-        var genrecombo = (ComboBox) Findname("GenreComboBox")!;
+        var genrecombo = (ComboBox)Findname("GenreComboBox")!;
 
     }
 
@@ -42,7 +42,7 @@ public partial class MainWindow : Window
         var title = FindName("TitleLabel") as Label;
         var author = FindName("AuthorLabel") as Label;
         var genre = FindName("GenreLabel") as Label;
-        var status =  FindName("StatusLabel") as Label;
+        var status = FindName("StatusLabel") as Label;
         var totalpages = FindName("TotalPagesLabel") as Label;
         var currentpage = FindName("CurrentPageLabel") as Label;
         var item = sender as ListBoxItem;
@@ -72,9 +72,9 @@ public partial class MainWindow : Window
         }
         else if (FindName("CompletedRadioButton") is RadioButton completed && completed.IsChecked == true)
         {
-           status = "Completed";
+            status = "Completed";
         }
-        var results = (ListBox) FindName("BooksListBox")!;
+        var results = (ListBox)FindName("BooksListBox")!;
         results.Items.Clear();
         foreach (var book in Data.books)
         {
@@ -88,6 +88,7 @@ public partial class MainWindow : Window
                 listitem.Tag = book;
                 listitem.Selected += Item_Click;
                 results.Items.Add(listitem);
+
             }
         }
     }
