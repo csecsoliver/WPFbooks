@@ -76,7 +76,9 @@ public partial class EditWindow : Window
 
     private void btnCancel_Click(object sender, RoutedEventArgs e)
     {
-        //Return to MainWindow
+        MainWindow mainWindow = new MainWindow();
+        mainWindow.Show();
+        Close();
     }
 
     private void btnSave_Click(object sender, RoutedEventArgs e)
