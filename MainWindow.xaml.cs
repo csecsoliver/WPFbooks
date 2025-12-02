@@ -33,7 +33,13 @@ public partial class MainWindow : Window
             listitem.Selected += Item_Click;
             booklist.Items.Add(listitem);
         }
-        var genrecombo = (ComboBox)Findname("GenreComboBox")!;
+        var genrecombo = (ComboBox)FindName("GenreComboBox")!;
+        foreach (var genre in Data.genres)
+        {
+            var comboitem = new ComboBoxItem();
+            comboitem.Content = genre.Name;
+            genrecombo.Items.Add(comboitem);
+        }
 
     }
 
@@ -74,14 +80,24 @@ public partial class MainWindow : Window
         {
             status = "Completed";
         }
+
+        var genreName = "Any";
+        foreach (var option in genre.Items)   
+        {
+            if (option is ComboBoxItem comboBoxItem && comboBoxItem.IsSelected)
+            {
+                genreName = comboBoxItem.Content.ToString();
+            }
+        }
         var results = (ListBox)FindName("BooksListBox")!;
         results.Items.Clear();
         foreach (var book in Data.books)
         {
             if ((string.IsNullOrEmpty(title!.Text) || book.Title.Contains(title.Text)) &&
                 (string.IsNullOrEmpty(author!.Text) || book.Author.Contains(author.Text)) &&
-                (status == "Any" || book.Status.ToString() == status)) &&
-                ()
+                (status == "Any" || book.Status.ToString() == status) &&
+                (genreName == "Any" || book.Genre.Name == genreName)
+                )
             {
                 var listitem = new ListBoxItem();
                 listitem.Content = book.Title;

@@ -94,7 +94,7 @@
                 Name="GenreComboBox"
                 VerticalAlignment="Center"
             >
-                <ComboBoxItem Selected="true">Any</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Any</ComboBoxItem>
 
             </ComboBox>
 
