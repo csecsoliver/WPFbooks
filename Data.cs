@@ -30,6 +30,11 @@ public static class Data
         using var sw = new StreamWriter(dataPath);
         var data = JsonSerializer.Serialize(books);
         sw.Write(data);
+        using var sw2 = new StreamWriter(genrePath);
+        var genreData = JsonSerializer.Serialize(genres);
+        sw2.Write(genreData);
+        var local = books;
+        
     }
 
     public static Genre GetGenreByName(string genreName)

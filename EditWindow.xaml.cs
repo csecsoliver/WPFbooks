@@ -9,9 +9,10 @@ namespace WPFbooks;
 
 public partial class EditWindow : Window
 {
-    public required Guid? bookId;
-    public EditWindow()
+    public Guid? bookId;
+    public EditWindow(Guid bookId)
     {
+        this.bookId = bookId;
         InitializeComponent();
         LoadBookData();
     }
@@ -24,13 +25,15 @@ public partial class EditWindow : Window
         //    return;
 
         //var book = books.First(book => book.Id == bookId);
-        var book = books[2]; //For testing
-
+        var book = Data.books.Find(book1 => book1.Id == this.bookId );
+        LoadGenres();
+        if (book == null)
+            return;
+        
         txtTitle.Text = book.Title;
         txtAuthor.Text = book.Author;
         txtPublishYear.Text = Convert.ToString(book.PublishedYear);
 
-        LoadGenres();
         cbGenre.SelectedItem = book.Genre.Name;
 
         switch (book.Status)
@@ -67,7 +70,7 @@ public partial class EditWindow : Window
     private void btnNewGenre_Click(object sender, RoutedEventArgs e)
     {
         var newGenre = cbGenre.Text;
-        if (Data.genres.Count(genre => genre.Name == newGenre) == 0)
+        if (Data.genres.Count(genre => genre.Name == newGenre) == 0 && newGenre != "")
         {
             Data.genres.Add(new Genre(newGenre));
             LoadGenres();
@@ -76,8 +79,8 @@ public partial class EditWindow : Window
 
     private void btnCancel_Click(object sender, RoutedEventArgs e)
     {
-        MainWindow mainWindow = new MainWindow();
-        mainWindow.Show();
+        // MainWindow mainWindow = new MainWindow();
+        // mainWindow.Show();
         Close();
     }
 
@@ -91,13 +94,16 @@ public partial class EditWindow : Window
         else
         {
             Book newBook = new Book();
-            Data.books.Add(newBook);
-            ModifyBookData(newBook);
+            if (ModifyBookData(newBook))
+            {
+                Data.books.Add(newBook);
+                
+            }
         }
-
+        
     }
 
-    private void ModifyBookData(Book book)
+    private bool ModifyBookData(Book book)
     {
         List<Control> errors = new List<Control>();
         int publishYear = -1;
@@ -114,10 +120,10 @@ public partial class EditWindow : Window
         if (!Data.genres.Any(genre => genre.Name == cbGenre.Text))
             errors.Add(cbGenre);
 
-        if (!int.TryParse(txtCurrentPage.Text, out currentPage) || currentPage < 0)
-            errors.Add(txtCurrentPage);
         if (!int.TryParse(txtTotalPages.Text, out totalPage) || totalPage < 0)
             errors.Add(txtTotalPages);
+        if (!int.TryParse(txtCurrentPage.Text, out currentPage) || currentPage < 0 || (currentPage>0&&(bool)rbNotStarted.IsChecked!) || (currentPage==0&&(bool)rbStarted.IsChecked!) || (currentPage<totalPage&&(bool)rbFinished.IsChecked!))
+            errors.Add(txtCurrentPage);
 
         if(currentPage > totalPage)
         {
@@ -127,6 +133,7 @@ public partial class EditWindow : Window
         if(errors.Count > 0)
         {
             ModifyBookError(errors);
+            return false;
         }
         else
         {
@@ -145,7 +152,9 @@ public partial class EditWindow : Window
             book.CurrentPage = currentPage;
             book.TotalPages = totalPage;
 
-            //Data.SaveData();      ---------> AFTER TESTING UNCOMMENT
+            Data.SaveData();     // ---------> AFTER TESTING UNCOMMENT
+            Close();
+            return true;
         }
     }
 
