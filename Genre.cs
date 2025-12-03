@@ -1,3 +1,16 @@
-﻿namespace WPFbooks;
+﻿﻿namespace WPFbooks;
 
-public record Genre(string Name);
+public class Genre
+{
+    public string Name { get; set; }
+    
+    public Genre(string name)
+    {
+        Name = name;
+    }
+    
+    public Genre()
+    {
+        Name = "";
+    }
+}

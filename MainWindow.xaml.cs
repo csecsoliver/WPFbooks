@@ -235,4 +235,11 @@ public partial class MainWindow : Window
             }
         }
     }
+
+    private void ManageGenres_OnClick(object sender, RoutedEventArgs e)
+    {
+        var genreManagerWindow = new GenreManagerWindow();
+        genreManagerWindow.ShowDialog();
+        MainWindow_OnLoaded(sender, e); // Reload to reflect any genre changes
+    }
 }

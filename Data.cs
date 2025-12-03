@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿﻿using System.IO;
 using System.Text.Json;
 
 namespace WPFbooks;
@@ -46,5 +46,30 @@ public static class Data
     {
         return genres.FirstOrDefault(genre => genre.Name == genreName)??
         throw new KeyNotFoundException();
+    }
+
+    public static int GetBookCountByGenre(string genreName)
+    {
+        return books.Count(book => book.GenreName == genreName);
+    }
+
+    public static bool CanDeleteGenre(string genreName)
+    {
+        return GetBookCountByGenre(genreName) == 0;
+    }
+
+    public static bool DeleteGenre(string genreName)
+    {
+        if (!CanDeleteGenre(genreName))
+            return false;
+        
+        var genre = genres.FirstOrDefault(g => g.Name == genreName);
+        if (genre != null)
+        {
+            genres.Remove(genre);
+            SaveData();
+            return true;
+        }
+        return false;
     }
 }

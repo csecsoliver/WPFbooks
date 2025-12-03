@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿﻿using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -74,6 +74,7 @@ public partial class EditWindow : Window
         {
             Data.genres.Add(new Genre(newGenre));
             LoadGenres();
+            Data.SaveData();
             MessageBox.Show("Új műfaj hozzáadva!", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         else if (Data.genres.Count(genre => genre.Name == newGenre) == 0 && newGenre == "")
