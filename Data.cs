@@ -27,14 +27,19 @@ public static class Data
 
     public static void SaveData()
     {
-        using var sw = new StreamWriter(dataPath);
-        var data = JsonSerializer.Serialize(books);
-        sw.Write(data);
-        using var sw2 = new StreamWriter(genrePath);
-        var genreData = JsonSerializer.Serialize(genres);
-        sw2.Write(genreData);
-        var local = books;
+        using (var sw = new StreamWriter(dataPath))
+        {
+            var data = JsonSerializer.Serialize(books);
+            sw.Write(data);
+            sw.Flush();
+        }
         
+        using (var sw2 = new StreamWriter(genrePath))
+        {
+            var genreData = JsonSerializer.Serialize(genres);
+            sw2.Write(genreData);
+            sw2.Flush();
+        }
     }
 
     public static Genre GetGenreByName(string genreName)

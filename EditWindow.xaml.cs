@@ -89,7 +89,7 @@ public partial class EditWindow : Window
         if (Data.books.Count(book => book.Id == bookId) != 0)
         {
             ModifyBookData(Data.books.First(book => book.Id == bookId));
-
+            Data.SaveData();
         }
         else
         {
@@ -97,7 +97,7 @@ public partial class EditWindow : Window
             if (ModifyBookData(newBook))
             {
                 Data.books.Add(newBook);
-                
+                Data.SaveData();
             }
         }
         
@@ -107,6 +107,7 @@ public partial class EditWindow : Window
     {
         List<Control> errors = new List<Control>();
         int publishYear = -1;
+        
         int currentPage = -1;
         int totalPage = -1;
         if (txtAuthor.Text == "")
@@ -140,7 +141,7 @@ public partial class EditWindow : Window
             book.Author = txtAuthor.Text;
             book.Title = txtTitle.Text;
             book.PublishedYear = publishYear;
-            book.Genre = Data.genres.First(genre => genre.Name == cbGenre.Text);
+            book.GenreName = cbGenre.Text;
 
             if (rbNotStarted.IsChecked == true)
                 book.Status = (BookStatus)0;
@@ -152,7 +153,6 @@ public partial class EditWindow : Window
             book.CurrentPage = currentPage;
             book.TotalPages = totalPage;
 
-            Data.SaveData();     // ---------> AFTER TESTING UNCOMMENT
             Close();
             return true;
         }
