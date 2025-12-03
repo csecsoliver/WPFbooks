@@ -34,7 +34,7 @@ public partial class EditWindow : Window
         txtAuthor.Text = book.Author;
         txtPublishYear.Text = Convert.ToString(book.PublishedYear);
 
-        cbGenre.SelectedItem = book.Genre.Name;
+        cbGenre.SelectedItem = book.Genre?.Name;
 
         switch (book.Status)
         {
@@ -74,6 +74,15 @@ public partial class EditWindow : Window
         {
             Data.genres.Add(new Genre(newGenre));
             LoadGenres();
+            MessageBox.Show("Új műfaj hozzáadva!", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        else if (Data.genres.Count(genre => genre.Name == newGenre) == 0 && newGenre == "")
+        {
+            MessageBox.Show("Adjon meg műfaj nevet!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        else if (Data.genres.Count(genre => genre.Name == newGenre) > 0)
+        {
+            MessageBox.Show("A műfaj létezik!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 

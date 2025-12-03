@@ -1,8 +1,26 @@
 ﻿[
   {
-    "Name": "Fiction"
+    "Name": "Regény"
   },
   {
-    "Name": "Dystopian"
+    "Name": "Sci-fi"
+  },
+  {
+    "Name": "Történelmi"
+  },
+  {
+    "Name": "Krimi"
+  },
+  {
+    "Name": "Fantasy"
+  },
+  {
+    "Name": "Vers"
+  },
+  {
+    "Name": "Verseskötet"
+  },
+  {
+    "Name": "Dráma"
   }
 ]

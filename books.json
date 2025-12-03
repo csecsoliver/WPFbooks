@@ -1,38 +1,110 @@
 ﻿[
   {
-    "Title": "To Kill a Mockingbird",
-    "Author": "Harper Lee",
-    "GenreName": "Fiction",
-    "PublishedYear": 1960,
-    "Status": 1,
-    "CurrentPage": 311,
-    "TotalPages": 400
+    "Title": "Egri csillagok",
+    "Author": "Gárdonyi Géza",
+    "GenreName": "Történelmi",
+    "PublishedYear": 1901,
+    "Status": 2,
+    "CurrentPage": 468,
+    "TotalPages": 468
   },
   {
-    "Title": "1984",
-    "Author": "George Orwell",
-    "GenreName": "Dystopian",
-    "PublishedYear": 1949,
+    "Title": "Az arany ember",
+    "Author": "Jókai Mór",
+    "GenreName": "Regény",
+    "PublishedYear": 1872,
     "Status": 1,
-    "CurrentPage": 1,
-    "TotalPages": 400
+    "CurrentPage": 145,
+    "TotalPages": 380
   },
   {
-    "Title": "The Great Gatsby",
-    "Author": "F. Scott Fitzgerald",
-    "GenreName": "Fiction",
-    "PublishedYear": 1925,
+    "Title": "A Pál utcai fiúk",
+    "Author": "Molnár Ferenc",
+    "GenreName": "Regény",
+    "PublishedYear": 1906,
+    "Status": 2,
+    "CurrentPage": 235,
+    "TotalPages": 235
+  },
+  {
+    "Title": "Tüskevár",
+    "Author": "Fekete István",
+    "GenreName": "Regény",
+    "PublishedYear": 1957,
     "Status": 0,
     "CurrentPage": 0,
-    "TotalPages": 400
+    "TotalPages": 320
   },
   {
-    "Title": "The Catcher in the Rye",
-    "Author": "J.D. Salinger",
-    "GenreName": "Fiction",
-    "PublishedYear": 1951,
+    "Title": "A láthatatlan ember",
+    "Author": "Örkény István",
+    "GenreName": "Dráma",
+    "PublishedYear": 1969,
+    "Status": 1,
+    "CurrentPage": 80,
+    "TotalPages": 157
+  },
+  {
+    "Title": "Légy jó mindhalálig",
+    "Author": "Móricz Zsigmond",
+    "GenreName": "Regény",
+    "PublishedYear": 1920,
+    "Status": 0,
+    "CurrentPage": 0,
+    "TotalPages": 278
+  },
+  {
+    "Title": "Abigél",
+    "Author": "Szabó Magda",
+    "GenreName": "Regény",
+    "PublishedYear": 1970,
+    "Status": 1,
+    "CurrentPage": 250,
+    "TotalPages": 512
+  },
+  {
+    "Title": "János vitéz",
+    "Author": "Petőfi Sándor",
+    "GenreName": "Vers",
+    "PublishedYear": 1845,
     "Status": 2,
-    "CurrentPage": 400,
-    "TotalPages": 400
+    "CurrentPage": 120,
+    "TotalPages": 120
+  },
+  {
+    "Title": "A kőszívű ember fiai",
+    "Author": "Jókai Mór",
+    "GenreName": "Történelmi",
+    "PublishedYear": 1869,
+    "Status": 0,
+    "CurrentPage": 0,
+    "TotalPages": 652
+  },
+  {
+    "Title": "Válogatott versek",
+    "Author": "Ady Endre",
+    "GenreName": "Verseskötet",
+    "PublishedYear": 1910,
+    "Status": 1,
+    "CurrentPage": 95,
+    "TotalPages": 245
+  },
+  {
+    "Title": "A szélkiáltó",
+    "Author": "Gárdonyi Géza",
+    "GenreName": "Regény",
+    "PublishedYear": 1902,
+    "Status": 0,
+    "CurrentPage": 0,
+    "TotalPages": 295
+  },
+  {
+    "Title": "Kontroll",
+    "Author": "Rejtő Jenő",
+    "GenreName": "Krimi",
+    "PublishedYear": 1941,
+    "Status": 2,
+    "CurrentPage": 218,
+    "TotalPages": 218
   }
 ]

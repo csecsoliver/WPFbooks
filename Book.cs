@@ -14,7 +14,7 @@ public class Book
         get;
     } = System.Guid.NewGuid();
     
-    public Genre Genre;
+    public Genre? Genre;
 
     private string _genreName;
     public string GenreName
@@ -22,8 +22,15 @@ public class Book
         get => _genreName;
         set
         {
-            Genre = Data.GetGenreByName(value);
             _genreName = value;
+            try
+            {
+                Genre = Data.GetGenreByName(value);
+            }
+            catch (KeyNotFoundException)
+            {
+                Genre = null;
+            }
         }
     }
 

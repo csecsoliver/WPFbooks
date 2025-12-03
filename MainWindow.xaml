@@ -184,7 +184,8 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
-                Margin="5">
+                Margin="5"
+                Click="DeleteBook_OnClick">
                 Törlés
             </Button>
 

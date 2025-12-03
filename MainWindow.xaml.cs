@@ -37,7 +37,7 @@ public partial class MainWindow : Window
         var genrecombo = (ComboBox)FindName("GenreComboBox")!;
         genrecombo.Items.Clear();
         var anyitem = new ComboBoxItem();
-        anyitem.Content = "Any";
+        anyitem.Content = "Mindegy";
         anyitem.IsSelected = true;
         genrecombo.Items.Add(anyitem);
         foreach (var genre in Data.genres)
@@ -64,8 +64,23 @@ public partial class MainWindow : Window
         item.IsSelected = true;
         title!.Content = book.Title;
         author!.Content = book.Author;
-        genre!.Content = book.Genre.Name;
-        status!.Content = book.Status;
+        genre!.Content = book.Genre?.Name ?? "Ismeretlen";
+        switch (book.Status)
+        {
+            case BookStatus.Completed:
+                status!.Content = "Befejezett";
+                break;
+            case BookStatus.Reading:
+                status!.Content = "Elkezdett";
+                break;
+            case BookStatus.ToRead:
+                status!.Content = "Nem elkezett";
+                break;
+            default:
+                status!.Content = "Ismeretlen";
+                break;
+        }
+        
         totalpages!.Content = book.TotalPages.ToString();
         currentpage!.Content = book.CurrentPage.ToString();
 
@@ -102,10 +117,10 @@ public partial class MainWindow : Window
         results.Items.Clear();
         foreach (var book in Data.books)
         {
-            if ((string.IsNullOrEmpty(title!.Text) || book.Title.Contains(title.Text)) &&
-                (string.IsNullOrEmpty(author!.Text) || book.Author.Contains(author.Text)) &&
+            if ((string.IsNullOrEmpty(title!.Text) || book.Title.ToLower().Contains(title.Text.ToLower())) &&
+                (string.IsNullOrEmpty(author!.Text) || book.Author.ToLower().Contains(author.Text.ToLower())) &&
                 (status == "Any" || book.Status.ToString() == status) &&
-                (genreName == "Any" || book.Genre.Name == genreName)
+                (genreName == "Mindegy" || book.Genre?.Name == genreName)
                 )
             {
                 var listitem = new ListBoxItem();
@@ -145,7 +160,11 @@ public partial class MainWindow : Window
                 selectedBookId = (item.Tag as Book)!.Id;
             }
         }
-
+        if (selectedBookId == Guid.Empty)
+        {
+            MessageBox.Show("Kérlek válassz ki egy könyvet a szerkesztéshez.", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
         var editWindow = new EditWindow(selectedBookId);
         editWindow.ShowDialog();
         MainWindow_OnLoaded(sender, e);
@@ -172,5 +191,48 @@ public partial class MainWindow : Window
         status!.Content = "";
         totalpages!.Content = "";
         currentpage!.Content = "";
+    }
+
+    private void DeleteBook_OnClick(object sender, RoutedEventArgs e)
+    {
+        var listBox = (ListBox)FindName("BooksListBox")!;
+        Book? selectedBook = null;
+        
+        foreach (ListBoxItem item in listBox.Items)
+        {
+            if (item.IsSelected)
+            {
+                selectedBook = item.Tag as Book;
+                break;
+            }
+        }
+
+        if (selectedBook == null)
+        {
+            MessageBox.Show("Kérlek válassz ki egy könyvet a törléshez.", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+
+        var confirmResult = MessageBox.Show(
+            $"Biztosan törölni szeretnéd a(z) '{selectedBook.Title}' című könyvet?",
+            "Törlés megerősítése",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question);
+
+        if (confirmResult == MessageBoxResult.Yes)
+        {
+            try
+            {
+                Data.books.Remove(selectedBook);
+                Data.SaveData();
+                MessageBox.Show("A könyv sikeresen törölve lett.", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+                ClearBook();
+                MainWindow_OnLoaded(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt a könyv törlése során: {ex.Message}", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
