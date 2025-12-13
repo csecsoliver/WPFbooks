@@ -19,16 +19,13 @@ public partial class EditWindow : Window
 
     private void LoadBookData()
     {
-        var books = Data.books;
-        //if(books.Count(book => book.Id == bookId) == 0)
-        //    rbNotStarted.IsChecked = true;
-        //    return;
-
-        //var book = books.First(book => book.Id == bookId);
-        var book = Data.books.Find(book1 => book1.Id == this.bookId );
+        var book = Data.books.Find(book1 => book1.Id == this.bookId);
         LoadGenres();
         if (book == null)
+        {
+            rbNotStarted.IsChecked = true;
             return;
+        }
         
         txtTitle.Text = book.Title;
         txtAuthor.Text = book.Author;
