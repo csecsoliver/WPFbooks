@@ -15,6 +15,57 @@
     ThemeMode="Dark"
     FontSize="14"
     Loaded="MainWindow_OnLoaded">
+
+    <Window.Resources>
+        <Style BasedOn="{StaticResource {x:Type Label}}" TargetType="Label" x:Key="BaseLabel">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource BaseLabel}" TargetType="Label" x:Key="HeaderLabel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5,0"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource BaseLabel}" TargetType="Label" x:Key="DetailLabel">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox" x:Key="BaseTextBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinHeight" Value="22"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type ComboBox}}" TargetType="ComboBox" x:Key="BaseComboBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinHeight" Value="22"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type RadioButton}}" TargetType="RadioButton" x:Key="BaseRadioButton">
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="Margin" Value="0,0,5,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="Button" x:Key="BaseButton">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinHeight" Value="25"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource BaseButton}" TargetType="Button" x:Key="StretchButton">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type ListBox}}" TargetType="ListBox" x:Key="BaseListBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -43,60 +94,45 @@
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
                 Content="Keresés"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Margin="5, 0"
-                FontSize="16"
-                FontWeight="Bold" />
+                Style="{StaticResource HeaderLabel}" />
             <Label
                 Grid.Column="0"
                 Grid.Row="1"
                 Content="Cím: "
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Margin="5, 0" />
+                Style="{StaticResource BaseLabel}" />
             <TextBox
                 Grid.Column="1"
                 Grid.Row="1"
                 Name="TitleInput"
-                VerticalAlignment="Center" />
+                Style="{StaticResource BaseTextBox}" />
 
             <Label
                 Grid.Column="0"
                 Grid.Row="2"
                 Content="Szerző: "
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Margin="5, 0" />
+                Style="{StaticResource BaseLabel}" />
             <TextBox
                 Grid.Column="1"
                 Grid.Row="2"
                 Name="AuthorInput"
-                VerticalAlignment="Center" />
+                Style="{StaticResource BaseTextBox}" />
 
             <Label
                 Grid.Column="0"
                 Grid.Row="3"
                 Content="Műfaj: "
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Margin="5, 0" />
+                Style="{StaticResource BaseLabel}" />
             <ComboBox
                 Grid.Column="1"
                 Grid.Row="3"
                 Name="GenreComboBox"
-                VerticalAlignment="Center">
-
-
-            </ComboBox>
+                Style="{StaticResource BaseComboBox}" />
 
             <Label
                 Grid.Column="0"
                 Grid.Row="4"
                 Content="Státusz: "
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Margin="5, 0" />
+                Style="{StaticResource BaseLabel}" />
             <RadioButton
                 Content="Mindegy"
                 GroupName="StatusRadio"
@@ -104,47 +140,43 @@
                 IsChecked="True"
                 Grid.Column="1"
                 Grid.Row="4"
-                VerticalContentAlignment="Top"
-                Margin="0,0,5,0" />
+                Style="{StaticResource BaseRadioButton}" />
             <RadioButton
                 Content="Nem elkezdett"
                 GroupName="StatusRadio"
                 Name="ToReadRadioButton"
                 Grid.Column="1"
                 Grid.Row="5"
-                VerticalContentAlignment="Top"
-                Margin="0,0,5,0" />
+                Style="{StaticResource BaseRadioButton}" />
             <RadioButton
                 Content="Elkezdett"
                 GroupName="StatusRadio"
                 Name="ReadingRadioButton"
                 Grid.Column="1"
                 Grid.Row="6"
-                VerticalContentAlignment="Top"
-                Margin="0,0,5,0" />
+                Style="{StaticResource BaseRadioButton}" />
             <RadioButton
                 Content="Befejezett"
                 GroupName="StatusRadio"
                 Name="CompletedRadioButton"
                 Grid.Column="1"
                 Grid.Row="7"
-                VerticalContentAlignment="Top"
-                Margin="0,0,5,0" />
+                Style="{StaticResource BaseRadioButton}" />
 
             <Button
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Grid.Row="8"
-                HorizontalAlignment="Stretch"
-                Click="SearchButton_Click">
+                Click="SearchButton_Click"
+                Style="{StaticResource StretchButton}">
                 Keresés
             </Button>
             <Button
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Grid.Row="9"
-                HorizontalAlignment="Stretch"
-                Click="ResetButton_OnClick">
+                Click="ResetButton_OnClick"
+                Style="{StaticResource StretchButton}">
                 Visszaállítás
             </Button>
         </Grid>
@@ -162,30 +194,27 @@
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
                 Name="BooksListBox"
-                Margin="5" />
-            <Button 
-                Grid.Row="1" 
-                Grid.Column="0" 
-                Grid.ColumnSpan="2" 
-                HorizontalAlignment="Stretch" 
-                Margin="5"
-                Click="NewBook_OnClick">
+                Style="{StaticResource BaseListBox}" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Click="NewBook_OnClick"
+                Style="{StaticResource StretchButton}">
                 Új könyv létrehozása
             </Button>
             <Button
                 Grid.Row="2"
                 Grid.Column="0"
-                HorizontalAlignment="Stretch"
-                Margin="5"
-                Click="EditBook_OnClick">
+                Click="EditBook_OnClick"
+                Style="{StaticResource StretchButton}">
                 Szerkesztés
             </Button>
             <Button
                 Grid.Row="2"
                 Grid.Column="1"
-                HorizontalAlignment="Stretch"
-                Margin="5"
-                Click="DeleteBook_OnClick">
+                Click="DeleteBook_OnClick"
+                Style="{StaticResource StretchButton}">
                 Törlés
             </Button>
 
@@ -209,95 +238,67 @@
             <Label
                 Grid.ColumnSpan="2"
                 Content="Könyv részletei"
-                FontSize="16"
-                FontWeight="Bold"
-                Margin="5"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" />
+                Style="{StaticResource HeaderLabel}" />
             <Label
                 Grid.Column="0"
                 Grid.Row="1"
                 Content="Cím: "
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource BaseLabel}" />
             <Label
                 Grid.Column="1"
                 Grid.Row="1"
                 Name="TitleLabel"
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource DetailLabel}" />
             <Label
                 Grid.Column="0"
                 Grid.Row="2"
                 Content="Szerző: "
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource BaseLabel}" />
             <Label
                 Grid.Column="1"
                 Grid.Row="2"
                 Name="AuthorLabel"
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource DetailLabel}" />
             <Label
                 Grid.Column="0"
                 Grid.Row="3"
                 Content="Műfaj: "
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource BaseLabel}" />
             <Label
                 Grid.Column="1"
                 Grid.Row="3"
                 Name="GenreLabel"
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource DetailLabel}" />
             <Label
                 Grid.Column="0"
                 Grid.Row="4"
                 Content="Státusz: "
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource BaseLabel}" />
             <Label
                 Grid.Column="1"
                 Grid.Row="4"
                 Name="StatusLabel"
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource DetailLabel}" />
             <Label
                 Grid.Column="0"
                 Grid.Row="5"
                 Content="Oldalszám: "
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource BaseLabel}" />
             <Label
                 Grid.Column="1"
                 Grid.Row="5"
                 Name="TotalPagesLabel"
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource DetailLabel}" />
             <Label
                 Grid.Column="0"
                 Grid.Row="6"
                 Content="Jelenlegi Oldal: "
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource BaseLabel}" />
             <Label
                 Grid.Column="1"
                 Grid.Row="6"
                 Name="CurrentPageLabel"
-                Margin="5"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center" />
+                Style="{StaticResource DetailLabel}" />
 
         </Grid>
     </Grid>
